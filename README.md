@@ -27,8 +27,10 @@ Start Mythfrontend, and go to "Setup", "System Event Handlers", "LiveTV started"
 Known issues:
 
 This program has not been tested with multiple HDHomeRun devices on the local network.
+
 The backend status may report the benign message "mythfilldatabase ran but did not insert any new data into the Guide."  This may be false due to the program not inserting any data that is after data that has previously been inserted.  
-The program first inserts data when live TV starts.  Pressing "i" or "info"  after tuning the first channel will, therefore, not show what is showing.  Switching the channels or showing the guide 
+
+The program first inserts data when live TV starts.  Pressing "i" or "info"  after tuning the first channel will, therefore, not show the epg info for what is on.  Switching the channels or showing the guide will show the info.
 
 Legal:
 
