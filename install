@@ -1,0 +1,144 @@
+#!/usr/bin/env python
+
+import sys, os, subprocess
+if __name__ == '__main__':
+    if os.geteuid() == 0:
+        print('Checking if installation files are present')
+        allFilesPresent = True
+        if not os.path.isfile('./hdhrepg2myth/hdhrepg2myth.py'):
+            print('hdhrepg2myth.py could not be found')
+            allFilesPresent = False
+        if not os.path.isfile('./hdhrepg2myth.cfg'):
+            print('hdhrepg2myth.cfg could not be found')
+            allFilesPresent = False
+        if not os.path.isfile('./hdhrepg2myth/LICENSE'):
+            print('LICENSE could not be found')
+            allFilesPresent = False
+        if not os.path.isfile('./hdhrepg2myth/README.md'):
+            print('README.md could not be found')
+            allFilesPresent = False
+        if not os.path.isfile('./hdhrepg2myth/util.py'):
+            print('util.py could not be found')
+            allFilesPresent = False
+        if not os.path.isfile('./hdhrepg2myth/hdhr/crc32c.py'):
+            print('crc32c.py could not be found')
+            allFilesPresent = False
+        if not os.path.isfile('./hdhrepg2myth/hdhr/discovery.py'):
+            print('discovery.py could not be found')
+            allFilesPresent = False
+        if not os.path.isfile('./hdhrepg2myth/hdhr/errors.py'):
+            print('errors.py could not be found')
+            allFilesPresent = False
+        if not os.path.isfile('./hdhrepg2myth/hdhr/guide.py'):
+            print('guide.py could not be found')
+            allFilesPresent = False
+        if not os.path.isfile('./hdhrepg2myth/hdhr/__init__.py'):
+            print('__init__.py could not be found')
+            allFilesPresent = False
+        if not os.path.isfile('./hdhrepg2myth/hdhr/netif.py'):
+            print('netif.py could not be found')
+            allFilesPresent = False
+        if not os.path.isfile('./hdhrepg2myth/hdhr/storageservers.py'):
+            print('storageservers.py could not be found')
+            allFilesPresent = False
+        if not os.path.isfile('./hdhrepg2myth/hdhr/tuners.py'):
+            print('tuners.py could not be found')
+            allFilesPresent = False
+        if not allFilesPresent:
+            print('No changes made')
+            print('Exiting')
+            sys.exit(0)
+        print('Files OK')
+
+        print('Checking required Python modules')
+        allModulesInstalled = True
+        try:
+            import requests
+        except ImportError:
+            print('Python requests module not installed')
+            allModulesInstalled = False
+        try:
+            import time
+        except ImportError:
+            print('Python time module not installed')
+            allModulesInstalled = False
+        try:
+            import socket
+        except ImportError:
+            print('Python socket module not installed')
+            allModulesInstalled = False
+        try:
+            import datetime
+        except ImportError:
+            print('Python datetime module not installed')
+            allModulesInstalled = False
+        try:
+            import ConfigParser
+        except ImportError:
+            print('Python ConfigParser module not installed')
+            allModulesInstalled = False
+        try:
+            import json
+        except ImportError:
+            print('Python json module not installed')
+            allModulesInstalled = False
+        try:
+            import logging
+        except ImportError:
+            print('Python logging module not installed')
+            allModulesInstalled = False
+        try:
+            import signal
+        except ImportError:
+            print('Python signal module not installed')
+            allModulesInstalled = False
+        try:
+            import compileall
+        except ImportError:
+            print('Python compileall module not installed')
+            allModulesInstalled = False
+        try:
+            import shutil
+        except ImportError:
+            print('Python shutil module not installed')
+            allModulesInstalled = False
+        if not allModulesInstalled:
+            print('Install the standard Python module(s) indicated prior to installing hdhrepg2myth')
+            print('No changes made')
+            print('Exiting')
+            sys.exit(0)
+        print('Modules OK')
+
+        print('Compiling Python files')
+        compileall.compile_dir('./hdhrepg2myth')
+
+        print('Installing hdhrepg2myth')
+        if os.path.isdir('/opt/hdhrepg2myth'):
+            shutil.rmtree('/opt/hdhrepg2myth')
+        shutil.copytree('./hdhrepg2myth', '/opt/hdhrepg2myth')
+        os.chmod("/opt/hdhrepg2myth/hdhrepg2myth.py", 0755)
+        os.chmod("/opt/hdhrepg2myth/util.py", 0755)
+        os.chmod("/opt/hdhrepg2myth/hdhr/crc32c.py", 0755)
+        os.chmod("/opt/hdhrepg2myth/hdhr/discovery.py", 0755)
+        os.chmod("/opt/hdhrepg2myth/hdhr/errors.py", 0755)
+        os.chmod("/opt/hdhrepg2myth/hdhr/guide.py", 0755)
+        os.chmod("/opt/hdhrepg2myth/hdhr/__init__.py", 0755)
+        os.chmod("/opt/hdhrepg2myth/hdhr/netif.py", 0755)
+        os.chmod("/opt/hdhrepg2myth/hdhr/storageservers.py", 0755)
+        os.chmod("/opt/hdhrepg2myth/hdhr/tuners.py", 0755)
+        if os.path.isfile('/opt/hdhrepg2myth/hdhrepg2myth.pyc'):
+            os.chmod("/opt/hdhrepg2myth/hdhrepg2myth.pyc", 0755)
+            os.chmod("/opt/hdhrepg2myth/util.pyc", 0755)
+            os.chmod("/opt/hdhrepg2myth/hdhr/crc32c.pyc", 0755)
+            os.chmod("/opt/hdhrepg2myth/hdhr/discovery.pyc", 0755)
+            os.chmod("/opt/hdhrepg2myth/hdhr/errors.pyc", 0755)
+            os.chmod("/opt/hdhrepg2myth/hdhr/guide.pyc", 0755)
+            os.chmod("/opt/hdhrepg2myth/hdhr/__init__.pyc", 0755)
+            os.chmod("/opt/hdhrepg2myth/hdhr/netif.pyc", 0755)
+            os.chmod("/opt/hdhrepg2myth/hdhr/storageservers.pyc", 0755)
+            os.chmod("/opt/hdhrepg2myth/hdhr/tuners.pyc", 0755)
+        print('Done')
+    else:
+        print('This install script must be run as root')
+        print('No changes made')
+        print('Exiting')
