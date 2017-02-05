@@ -28,6 +28,8 @@ Known issues:
 
 This program has not been tested with multiple HDHomeRun devices on the local network.
 The backend status may report the benign message "mythfilldatabase ran but did not insert any new data into the Guide."  This may be false due to the program not inserting any data that is after data that has previously been inserted.  
-The program first inserts data when live TV starts.  Pressing "i" or "info"  after tuning the first channel will, therefore, not show what is showing.  Switching the channels or showing the guide  
+The program first inserts data when live TV starts.  Pressing "i" or "info"  after tuning the first channel will, therefore, not show what is showing.  Switching the channels or showing the guide 
+
+Legal:
 
 This program is a modified version of the HDHomeRun Kodi add-on.  It has been modified for the purpose described above.  A copy of the GNU GPL license is included, and no warranty is expressed or implied.  This program may be copied, distributed and/or modified in accordance with the included license.  The license does not include the guide data.  Refer to Silicondust (https://forum.silicondust.com/forum/index.php) for the conditions under which the guide data can be used.  
