@@ -22,7 +22,7 @@ Open hdhrepg2myth.cfg with a text editor, change the values as needed, and save 
 
 Edit the xmltvid values in the channel information section of mythweb/settings to match channel values.  For example, set the xmltvid values to 2, 3, 4, etc.
 
-Stat Mythfrontend, and go to "Setup", "System Event Handlers", "LiveTV started".  Type "/opt/hdhrepg2myth/hdhrepg2myth.py" without the quotes.  
+Start Mythfrontend, and go to "Setup", "System Event Handlers", "LiveTV started".  Type "/opt/hdhrepg2myth/hdhrepg2myth.py" without the quotes.  
 
 Known issues:
 
