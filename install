@@ -116,8 +116,10 @@ if __name__ == '__main__':
         if os.path.isdir('/opt/hdhrepg2myth'):
             shutil.rmtree('/opt/hdhrepg2myth')
         shutil.copytree('./hdhrepg2myth', '/opt/hdhrepg2myth')
+        os.chmod("/opt/hdhrepg2myth", 0755)
         os.chmod("/opt/hdhrepg2myth/hdhrepg2myth.py", 0755)
         os.chmod("/opt/hdhrepg2myth/util.py", 0755)
+        os.chmod("/opt/hdhrepg2myth/hdhr", 0755)
         os.chmod("/opt/hdhrepg2myth/hdhr/crc32c.py", 0755)
         os.chmod("/opt/hdhrepg2myth/hdhr/discovery.py", 0755)
         os.chmod("/opt/hdhrepg2myth/hdhr/errors.py", 0755)
