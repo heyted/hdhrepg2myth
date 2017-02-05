@@ -25,6 +25,7 @@ Edit the xmltvid values in the channel information section of mythweb/settings t
 Stat Mythfrontend, and go to "Setup", "System Event Handlers", "LiveTV started".  Type "/opt/hdhrepg2myth/hdhrepg2myth.py" without the quotes.  
 
 Known issues:
+
 This program has not been tested with multiple HDHomeRun devices on the local network.
 The backend status may report the benign message "mythfilldatabase ran but did not insert any new data into the Guide."  This may be false due to the program not inserting any data that is after data that has previously been inserted.  
 The program first inserts data when live TV starts.  Pressing "i" or "info"  after tuning the first channel will, therefore, not show what is showing.  Switching the channels or showing the guide  
