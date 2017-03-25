@@ -1,8 +1,12 @@
+<HEAD>
+<style> .indented { padding-left: 50pt; padding-right: 50pt; } </style>
+</HEAD>
+
 # hdhrepg2myth
 
-The purpose of this software is to provide an approximately four-hour guide when watching live TV using MythTV.  You must own a compatible HDHomeRun device, and this program has been tested only with a HDHomeRun Prime with the program installed on Mythbuntu with MythTV 0.28.  
+The purpose of this software is to provide an approximately four-hour guide when watching live TV using MythTV.  You must own a compatible HDHomeRun device, and this program has been tested only with a HDHomeRun Prime with the program installed on Mythbuntu with MythTV 0.28.
 
-Installation and usage:
+### Installation and Usage
 
 All channels should already be setup and usable in Mythfrontend.
 
@@ -24,14 +28,14 @@ Edit the xmltvid values in the channel information section of mythweb/settings t
 
 Start Mythfrontend, and go to "Setup", "System Event Handlers", "LiveTV started".  Type "/opt/hdhrepg2myth/hdhrepg2myth.py" without the quotes.  
 
-Known issues:
+### Known Issues
 
 This program has not been tested with multiple HDHomeRun devices on the local network.
 
 The backend status may report the benign message "mythfilldatabase ran but did not insert any new data into the Guide."  This may be false due to the program not inserting any data that is after data that has previously been inserted.  
 
-The program first inserts data when live TV starts.  Pressing "i" or "info"  after tuning the first channel will, therefore, not show the epg info for what is on.  Switching the channels or showing the guide will show the info.
+The program first inserts data when live TV starts.  Pressing "i" or "info"  after tuning the first channel will, therefore, not show the epg info for what is currently on.  Switching the channel or showing the guide will show the info.
 
-Legal:
+### Legal
 
 This program is a modified version of the HDHomeRun Kodi add-on.  It has been modified for the purpose described above.  A copy of the GNU GPL license is included, and no warranty is expressed or implied.  This program may be copied, distributed and/or modified in accordance with the included license.  The license does not include the guide data.  Refer to Silicondust (https://forum.silicondust.com/forum/index.php) for the conditions under which the guide data can be used.  
