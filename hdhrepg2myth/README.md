@@ -1,6 +1,6 @@
 # hdhrepg2myth
 
-The purpose of this software is to provide an approximately four-hour guide when watching live TV using MythTV.  You must own a compatible HDHomeRun device, and this program has been tested only with a HDHomeRun Prime with the program installed on Mythbuntu with MythTV 0.28.  
+The purpose of this software is to provide an approximately four-hour guide when watching live TV using MythTV.  You must own a compatible HDHomeRun device, and this program has been tested only with a HDHomeRun Prime.  
 
 Installation and Usage:
 All channels should already be setup and usable in Mythfrontend.
