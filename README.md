@@ -14,7 +14,7 @@ The purpose of this software is to provide an approximately four-hour guide when
 
 * In your home folder, there must be the install file, hdhrepg2myth.cfg file, and the hdhrepg2myth folder.  The install and hdhrepg2myth.cfg files must be in your home folder and not a subfolder.
 
-* Open a terminal and type "sudo ./install" without the quotes.
+* Open a terminal and enter "sudo ./install" without the quotes.
 
 * After installation, the install file and hdhrepg2myth folder can be deleted from the home folder.
 
@@ -24,7 +24,7 @@ The purpose of this software is to provide an approximately four-hour guide when
 
 * Edit the xmltvid values in the channel information section of mythweb/settings to match channel values.  For example, set the xmltvid values to 2, 3, 4, etc.  This may not need to be done depending on the method used to add the channels.
 
-* Start Mythfrontend, and go to "Setup", "System Event Handlers", "LiveTV started".  Type "/opt/hdhrepg2myth/hdhrepg2myth.py" without the quotes.  
+* Start Mythfrontend, and go to "Setup", "System Event Handlers", "LiveTV started".  Enter "/opt/hdhrepg2myth/hdhrepg2myth.py" without the quotes.  
 
 ### Known Issues
 
