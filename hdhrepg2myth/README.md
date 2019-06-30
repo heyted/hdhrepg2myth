@@ -20,7 +20,7 @@ After installation, the install file and hdhrepg2myth folder can be deleted from
 
 Open hdhrepg2myth.cfg with a text editor, change the values as needed, and save the file. Replace the underscores in the backend ip address with numbers. The port number will most likely not need to be changed, and it is recommended to keep the channel low value set to 2 or above.
 
-Move the hdhrepg2myth.cfg file by opening a terminal a entering "sudo mv /home/yourusernamehere/hdhrepg2myth.cfg /home/mythtv/" without the quotes.
+Move the hdhrepg2myth.cfg file by opening a terminal a entering "sudo mv /home/yourusernamehere/hdhrepg2myth.cfg /home/mythtv/" without the quotes  and use your user name.
 
 Edit the xmltvid values in the channel information section of mythweb/settings to match channel values. For example, set the xmltvid values to 2, 3, 4, etc. This may not need to be done depending on the method used to add the channels.
 
