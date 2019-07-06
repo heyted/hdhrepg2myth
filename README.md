@@ -22,7 +22,7 @@ The purpose of this software is to provide an approximately four-hour guide when
 
 * Move the hdhrepg2myth.cfg file by opening a terminal a entering "sudo mv /home/yourusernamehere/hdhrepg2myth.cfg /home/mythtv/" without the quotes and use your user name.
 
-* Edit the xmltvid values in the channel information section of mythweb/settings to match channel values.  For example, set the xmltvid values to 2, 3, 4, etc.  This may not need to be done depending on the method used to add the channels.
+* Edit the xmltvid values in the channel information section of mythweb/settings to match channel values.  For example, set the xmltvid values to 2, 3, 4, etc.  This may have already automatically been done depending on the method used to add the channels.
 
 * Start Mythfrontend, and go to "Setup", "System Event Handlers", "LiveTV started".  Enter "/opt/hdhrepg2myth/hdhrepg2myth.py" without the quotes.  
 
