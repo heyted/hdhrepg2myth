@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys, os, subprocess
 if __name__ == '__main__':
@@ -73,9 +73,9 @@ if __name__ == '__main__':
             print('Python datetime module not installed')
             allModulesInstalled = False
         try:
-            import ConfigParser
+            import configparser
         except ImportError:
-            print('Python ConfigParser module not installed')
+            print('Python configparser module not installed')
             allModulesInstalled = False
         try:
             import json
@@ -116,29 +116,29 @@ if __name__ == '__main__':
         if os.path.isdir('/opt/hdhrepg2myth'):
             shutil.rmtree('/opt/hdhrepg2myth')
         shutil.copytree('./hdhrepg2myth', '/opt/hdhrepg2myth')
-        os.chmod("/opt/hdhrepg2myth", 0755)
-        os.chmod("/opt/hdhrepg2myth/hdhrepg2myth.py", 0755)
-        os.chmod("/opt/hdhrepg2myth/util.py", 0755)
-        os.chmod("/opt/hdhrepg2myth/hdhr", 0755)
-        os.chmod("/opt/hdhrepg2myth/hdhr/crc32c.py", 0755)
-        os.chmod("/opt/hdhrepg2myth/hdhr/discovery.py", 0755)
-        os.chmod("/opt/hdhrepg2myth/hdhr/errors.py", 0755)
-        os.chmod("/opt/hdhrepg2myth/hdhr/guide.py", 0755)
-        os.chmod("/opt/hdhrepg2myth/hdhr/__init__.py", 0755)
-        os.chmod("/opt/hdhrepg2myth/hdhr/netif.py", 0755)
-        os.chmod("/opt/hdhrepg2myth/hdhr/storageservers.py", 0755)
-        os.chmod("/opt/hdhrepg2myth/hdhr/tuners.py", 0755)
+        os.chmod("/opt/hdhrepg2myth", 0o755)
+        os.chmod("/opt/hdhrepg2myth/hdhrepg2myth.py", 0o755)
+        os.chmod("/opt/hdhrepg2myth/util.py", 0o755)
+        os.chmod("/opt/hdhrepg2myth/hdhr", 0o755)
+        os.chmod("/opt/hdhrepg2myth/hdhr/crc32c.py", 0o755)
+        os.chmod("/opt/hdhrepg2myth/hdhr/discovery.py", 0o755)
+        os.chmod("/opt/hdhrepg2myth/hdhr/errors.py", 0o755)
+        os.chmod("/opt/hdhrepg2myth/hdhr/guide.py", 0o755)
+        os.chmod("/opt/hdhrepg2myth/hdhr/__init__.py", 0o755)
+        os.chmod("/opt/hdhrepg2myth/hdhr/netif.py", 0o755)
+        os.chmod("/opt/hdhrepg2myth/hdhr/storageservers.py", 0o755)
+        os.chmod("/opt/hdhrepg2myth/hdhr/tuners.py", 0o755)
         if os.path.isfile('/opt/hdhrepg2myth/hdhrepg2myth.pyc'):
-            os.chmod("/opt/hdhrepg2myth/hdhrepg2myth.pyc", 0755)
-            os.chmod("/opt/hdhrepg2myth/util.pyc", 0755)
-            os.chmod("/opt/hdhrepg2myth/hdhr/crc32c.pyc", 0755)
-            os.chmod("/opt/hdhrepg2myth/hdhr/discovery.pyc", 0755)
-            os.chmod("/opt/hdhrepg2myth/hdhr/errors.pyc", 0755)
-            os.chmod("/opt/hdhrepg2myth/hdhr/guide.pyc", 0755)
-            os.chmod("/opt/hdhrepg2myth/hdhr/__init__.pyc", 0755)
-            os.chmod("/opt/hdhrepg2myth/hdhr/netif.pyc", 0755)
-            os.chmod("/opt/hdhrepg2myth/hdhr/storageservers.pyc", 0755)
-            os.chmod("/opt/hdhrepg2myth/hdhr/tuners.pyc", 0755)
+            os.chmod("/opt/hdhrepg2myth/hdhrepg2myth.pyc", 0o755)
+            os.chmod("/opt/hdhrepg2myth/util.pyc", 0o755)
+            os.chmod("/opt/hdhrepg2myth/hdhr/crc32c.pyc", 0o755)
+            os.chmod("/opt/hdhrepg2myth/hdhr/discovery.pyc", 0o755)
+            os.chmod("/opt/hdhrepg2myth/hdhr/errors.pyc", 0o755)
+            os.chmod("/opt/hdhrepg2myth/hdhr/guide.pyc", 0o755)
+            os.chmod("/opt/hdhrepg2myth/hdhr/__init__.pyc", 0o755)
+            os.chmod("/opt/hdhrepg2myth/hdhr/netif.pyc", 0o755)
+            os.chmod("/opt/hdhrepg2myth/hdhr/storageservers.pyc", 0o755)
+            os.chmod("/opt/hdhrepg2myth/hdhr/tuners.pyc", 0o755)
         print('Done')
     else:
         print('This install script must be run as root')
