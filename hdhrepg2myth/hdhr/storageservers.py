@@ -2,8 +2,8 @@
 import requests, os, sys
 import urllib
 import time
-import guide
-import errors
+import hdhr.guide as guide
+import hdhr.errors as errors
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath('util.py'))))
 import util
 
