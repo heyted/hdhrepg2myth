@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
-import crc32c, os, sys
+import os, sys
+import hdhr.crc32c as crc32c
 import binascii
 import socket
 import traceback
 import struct
-import StringIO
+import io
 import time
 import base64
 import requests
-import errors
+import hdhr.errors as errors
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath('util.py'))))
 import util
 
@@ -53,7 +54,7 @@ class Devices(object):
         self.discover()
 
     def discover(self, device=None):
-        import netif
+        import hdhr.netif as netif
         ifaces = netif.getInterfaces()
         sockets = []
         for i in ifaces:
@@ -88,7 +89,7 @@ class Devices(object):
                         message, address = s.recvfrom(8096)
 
                         added = self.add(message,address)
-                        print added
+                        print(added)
                         if added:
                             util.DEBUG_LOG('<-o   Response Packet[{0}]({1})'.format(i.name,binascii.hexlify(message)))
                         elif added == False:
@@ -116,7 +117,7 @@ class Devices(object):
 
     @property
     def allDevices(self):
-        return self.tunerDevices + self.storageServers + self._other
+        return self.tunerDevices
 
     def isOld(self):
         return (time.time() - self._discoveryTimestamp) > self.MAX_AGE
@@ -161,17 +162,18 @@ class Devices(object):
             traceback.print_exc()
             return None
 
-        dataIO = StringIO.StringIO(data)
+        dataIO = io.BytesIO(data)
 
-        tag, length = struct.unpack('>BB',dataIO.read(2))
-        deviceType = struct.unpack('>I',dataIO.read(length))[0]
+        #tag, length = struct.unpack('>BB',dataIO.read(2))
+        #deviceType = struct.unpack('>I',dataIO.read(length))[0]
+        return self.processData(TunerDevice(address),dataIO)
 
-        if deviceType == TUNER_DEVICE:
-            return self.processData(TunerDevice(address),dataIO)
-        elif deviceType == STORAGE_SERVER:
-            return self.processData(StorageServer(address),dataIO)
-        else:
-            return self.processData(Device(address),dataIO)
+	    #if deviceType == TUNER_DEVICE:
+        #    return self.processData(TunerDevice(address),dataIO)
+        #elif deviceType == STORAGE_SERVER:
+        #    return self.processData(StorageServer(address),dataIO)
+        #else:
+        #    return self.processData(Device(address),dataIO)
 
     def processData(self,device,dataIO):
         while True:
@@ -213,19 +215,20 @@ class Devices(object):
         return True
 
     def getDeviceByIP(self,ip):
-        for d in self.tunerDevices + self.storageServers:
+        for d in self.tunerDevices:
             if d.ip == ip:
                 return d
         return None
 
     def apiAuthID(self):
-        combined = ''
+        #combined = ''
         ids = []
         for d in self.tunerDevices:
             ids.append(d.ID)
             authID = d.deviceAuth
             if not authID: continue
-            combined += authID
+            #combined += authID This may need to be edited
+            combined = authID
 
         if not combined:
             util.LOG('WARNING: No device auth for any devices!')
