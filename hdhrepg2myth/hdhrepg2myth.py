@@ -1,8 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-import os, sys, requests, subprocess, time, socket, datetime, ConfigParser, json, logging, signal
+import os, sys, requests, subprocess, time, socket, datetime, configparser, json, logging, signal
 os.chdir('/opt/hdhrepg2myth/')
-import hdhr
+from hdhr import errors
+from hdhr import tuners
+from hdhr import storageservers
+from hdhr import guide
+from hdhr import discovery
 import util
 
 def delXmlAndExit():
@@ -57,12 +61,12 @@ def removeNonAscii(s):
 
 def getGuide(lineup):
     try:
-        guide = hdhr.guide.Guide(lineup)
-        schedule_json_wa = guide.data
+        guide_raw = guide.Guide(lineup)
+        schedule_json_wa = guide_raw.data
         schedule_json = removeNonAscii(schedule_json_wa)
         return json.loads(schedule_json)
     except:
-        logging.info('Unable to fetch guide')
+        logging.info('getGuide:  Unable to fetch guide')
 
 def isbadipv4(s):
     pieces = s.split('.')
@@ -75,6 +79,7 @@ if __name__ == '__main__':
     sleeping = False
     homepath = os.path.expanduser('~')
     msg = '<mythnotification version="1">  <text>Guide updated</text>  <origin>HDHomeRun</origin>  <type>normal</type></mythnotification>'
+    msg_bytes = bytearray(msg,'utf-8')
     udp_port = 6948
     sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
     try:
@@ -82,13 +87,14 @@ if __name__ == '__main__':
         logging.basicConfig(format='%(levelname)s:%(message)s', filename='/home/mythtv/hdhrepg2myth.log', filemode='w', level=logging.INFO)
     except IOError:
         logging.basicConfig(format='%(levelname)s:%(message)s', filename='/tmp/hdhrepg2myth.log', filemode='w', level=logging.DEBUG)
-    config = ConfigParser.RawConfigParser()
+    config = configparser.RawConfigParser()
     killer = GracefulKiller()
     logging.info("hdhrepg2myth.py started")
     if os.path.isfile(homepath + '/hdhrepg2myth.cfg'):
         #Get config info
         config.read(homepath + '/hdhrepg2myth.cfg')
         myth_lan_ip = config.get('hdhrepg2mythsettings', 'myth_lan_ip')
+        myth_ip_bytes = bytearray(myth_lan_ip,'utf-8')
         if isbadipv4(myth_lan_ip):
             logging.info('Aborting (invalid MythTV backend server IP address in configuration file)')
             sys.exit(0)
@@ -120,8 +126,8 @@ if __name__ == '__main__':
     local = LocalOffset()
     for i in range(3):
         try:
-            device = hdhr.discovery.Devices()
-            lineup = hdhr.tuners.lineup(device)
+            device = discovery.Devices()
+            lineup = tuners.lineup(device)
             logging.info('Lineup received')
             break
         except:
@@ -203,7 +209,7 @@ if __name__ == '__main__':
         if gotSchedule:
             logging.info('Running mythfilldatabase')
             subprocess.call('mythfilldatabase --refresh 1 --file --sourceid ' + myth_source_id + ' --xmlfile /tmp/xmltv.xml', shell=True)
-            sock.sendto(msg, (myth_lan_ip, udp_port))
+            sock.sendto(msg_bytes, (myth_ip_bytes, udp_port))
         sleeping = True
         time.sleep(10500) #Sleep 2 hr 55 min
         sleeping = False
