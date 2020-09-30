@@ -168,7 +168,7 @@ class Devices(object):
         #deviceType = struct.unpack('>I',dataIO.read(length))[0]
         return self.processData(TunerDevice(address),dataIO)
 
-	    #if deviceType == TUNER_DEVICE:
+	#if deviceType == TUNER_DEVICE:
         #    return self.processData(TunerDevice(address),dataIO)
         #elif deviceType == STORAGE_SERVER:
         #    return self.processData(StorageServer(address),dataIO)
@@ -363,4 +363,3 @@ class StorageServer(Device):
         util.DEBUG_LOG('Pinging storage Server: {0}'.format(self._baseURL))
 
         requests.post(self.url(self._ruleSyncURI))
-
