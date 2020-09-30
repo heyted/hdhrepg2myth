@@ -8,8 +8,7 @@ except:
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath('util.py'))))
 import util
-import errors
-
+import hdhr.errors as errors
 
 def chanTuple(guide_number,chanCount):
     major, minor = (guide_number + '.0').split('.',2)[:2]
@@ -106,10 +105,10 @@ class lineup(object):
         if not lineups:
             if err:
                 util.LOG('ERROR: No compatible devices found!')
-                raise errors.NoCompatibleDevicesException()
+                sys.exit(0)
             else:
                 util.DEBUG_LOG('ERROR: Empty lineup!')
-                raise errors.EmptylineupException()
+                sys.exit(0)
 
         hideDRM = True
 
