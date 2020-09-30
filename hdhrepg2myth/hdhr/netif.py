@@ -19,16 +19,6 @@ def getInterfaces():
     except:
         pass
 
-    try:
-        return _getInterfacesBSD()
-    except:
-        pass
-
-    try:
-        return _getInterfacesWin()
-    except:
-        pass
-
     i = Interface()
     i.name = 'FALLBACK'
     return [i]
@@ -45,33 +35,6 @@ def _getInterfaces():
             i.mask = mask
         except:
             i.mask = ''
-        interfaces.append(i)
-    return interfaces
-
-def _getInterfacesBSD():
-    #name flags family address netmask
-    interfaces = []
-    import getifaddrs
-    for info in getifaddrs.getifaddrs():
-        if info.family == 2:
-            i = Interface()
-            i.name = info.name
-            i.ip = info.address
-            i.mask = info.netmask
-            interfaces.append(i)
-    return interfaces
-
-def _getInterfacesWin():
-    import ipconfig
-    interfaces = []
-    adapters = ipconfig.parse()
-    for a in adapters:
-        if not 'IPv4 Address' in a: continue
-        if not 'Subnet Mask' in a: continue
-        i = Interface()
-        i.name = a.get('name','UNKNOWN')
-        i.ip = a['IPv4 Address']
-        i.mask = a['Subnet Mask']
         interfaces.append(i)
     return interfaces
 
