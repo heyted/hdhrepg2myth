@@ -78,7 +78,7 @@ def add(crc, buf):
     return crc
 
 def done(crc):
-    tmp = ~crc & 0xffffffffL
+    tmp = ~crc & 0xffffffff
     b0 = tmp & 0xff
     b1 = (tmp >> 8) & 0xff
     b2 = (tmp >> 16) & 0xff
@@ -88,4 +88,4 @@ def done(crc):
 
 def cksum(buf):
     """Return computed CRC-32c checksum."""
-    return done(add(0xffffffffL, buf))
+    return done(add(0xffffffff, buf))
