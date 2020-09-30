@@ -227,4 +227,3 @@ if __name__ == '__main__':
         if killer.killNow:
             logging.info('hdhrepg2myth.py exiting (caught exit signal)')
             delXmlAndExit()
-
