@@ -3,7 +3,7 @@ import time, os, sys
 import datetime
 import random
 import requests
-import urllib
+import urllib.parse as urllib
 import json
 
 try:
@@ -13,7 +13,7 @@ except:
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath('util.py'))))
 import util
-import errors
+import hdhr.errors
 
 GUIDE_URL = 'http://my.hdhomerun.com/api/guide.php?DeviceAuth={0}'
 SLICE_URL = 'http://my.hdhomerun.com/api/guide.php?DeviceAuth={deviceAuth}&Channel={channel}{start}'
