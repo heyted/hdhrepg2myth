@@ -1,3 +1,5 @@
+Note:  As of January 2022, the guide retreival method used by hdhrepg2myth has been reported to not be working.  This issue will be reviewed.
+
 # hdhrepg2myth
 
 The purpose of this software is to provide an approximately four-hour guide when watching live TV using MythTV.  You must own a compatible HDHomeRun device, and this program has been tested only with an HDHomeRun Prime.  The latest release has been tested with Ubuntu 20.04 and MythTV v31.
