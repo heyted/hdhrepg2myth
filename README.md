@@ -1,4 +1,4 @@
-Note:  As of January 2022, the guide retreival method used by hdhrepg2myth has been reported to not be working.  This issue will be reviewed.
+Note:  As of January 2022, older firmware versions are no longer compatible with hdhrepg2myth.  Updgrade to firmware version 20210624 on an HDHomeRun Prime.
 
 # hdhrepg2myth
 
