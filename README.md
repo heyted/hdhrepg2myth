@@ -2,7 +2,7 @@ Note:  As of January 2022, older firmware versions are no longer compatible with
 
 # hdhrepg2myth
 
-The purpose of this software is to provide an approximately four-hour guide when watching live TV using MythTV.  You must own a compatible HDHomeRun device, and this program has been tested only with an HDHomeRun Prime.  The latest release has been tested with Ubuntu 20.04 and MythTV v31.
+The purpose of this software is to provide an approximately four-hour guide when watching live TV using MythTV.  You must own a compatible HDHomeRun device, and this program has been tested only with an HDHomeRun Prime.  The latest release has been tested with MythTV v31 on Ubuntu 20.04 and MythTV v32 on Ubuntu 22.04.
 
 ### Installation and Usage
 
